@@ -272,7 +272,7 @@
 
                 // ajax call
                 $.ajax({
-                    url: 'php/checkout-process.php',
+                    url: 'php/mail.php',
                     type: 'POST',
                     data: checkOutForm.serialize(),
                     beforeSend: function() {

@@ -2029,6 +2029,7 @@ p.sub-title {
   font-weight: 500;
   color: #ffffff;
   margin-bottom: 10px;
+  display: inline;
 }
 .counter-area .counter-box .media-body p {
   margin-bottom: 0;
