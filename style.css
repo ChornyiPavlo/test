@@ -1337,7 +1337,7 @@ p.sub-title {
 .home-three-service .single-service {
   text-align: center;
   border-right: 1px solid #dddddd;
-  padding: 100px 30px;
+  padding: 100px 30px 40px;
   overflow: hidden;
 }
 .home-three-service .single-service .service-media {
@@ -1382,6 +1382,21 @@ p.sub-title {
 .home-three-service .single-service:hover .service-content {
   -webkit-transform: scale(1);
   transform: scale(1);
+}
+.border {
+  border-top: 1px solid #dddddd;
+  margin: 20px 20px;
+}
+.h-270 {
+  height: 270px;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+.absolute-b40 {
+  position: absolute;
+  bottom: 40px;
 }
 /**==================== 04. Home Four Service Area  =====================**/
 .home-four-service .single-service .service-image {
