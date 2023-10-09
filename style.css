@@ -1189,7 +1189,7 @@ p.sub-title {
   line-height: 1.4;
   font-weight: 500;
   font-family: 'Poppins', sans-serif;
-  width: 100%;
+  width: 50%;
 }
 .slider-default .slider-content p {
   color: #e1e1e1;
@@ -1337,7 +1337,7 @@ p.sub-title {
 .home-three-service .single-service {
   text-align: center;
   border-right: 1px solid #dddddd;
-  padding: 100px 30px 40px;
+  padding: 50px 30px 40px;
   overflow: hidden;
 }
 .home-three-service .single-service .service-media {

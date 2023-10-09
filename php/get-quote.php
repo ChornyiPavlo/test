@@ -1,58 +1,56 @@
 <?php
-$EmailTo = "info@radiustheme.com";
-$subject = "New Quote Request is Received";
-
-$errorMSG = "";
-$name = $email = $message = null;
-// NAME
-if (empty($_POST["name"])) {
-    $errorMSG = "Name is required ";
-} else {
-    $name = $_POST["name"];
-}
- 
-// EMAIL
-if (empty($_POST["email"])) {
-    $errorMSG .= "Email is required ";
-} else {
-    $email = $fromEmail = $_POST["email"];
-}
- 
-// MESSAGE
-if (empty($_POST["message"])) {
-    $errorMSG .= "Message is required ";
-} else {
-    $message = $_POST["message"];
-}
- 
-// prepare email body text
-$Body = null;
-$Body .= "<p><b>Name:</b> {$name}</p>";
-$Body .= "<p><b>Email:</b> {$email}</p>";
-$Body .= "<p><b>Message:</b> </p><p>{$message}</p>";
-
- 
-
-// send email
-$headers = 'MIME-Version: 1.0' . "\r\n";
-$headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
-$headers .= 'From:  ' . $name . ' <' . $email .'>' . " \r\n" .
-            'Reply-To: '.  $fromEmail . "\r\n" .
-            'X-Mailer: PHP/' . phpversion();
-
-if($name && $subject && $email && $message){
-    $success = mail($EmailTo, $subject, $Body, $headers );
-}else{
-    $success = false;
-}
-
-
-if ($success && $errorMSG == ""){
-   echo "success";
-}else{
-    if($errorMSG == ""){
-        echo "Something went wrong :(";
-    } else {
-        echo $errorMSG;
+// TELEGRAM
+// Only process POST requests.
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Get the form fields and remove whitespace.
+    $name = strip_tags(trim($_POST["name"]));
+    $email = filter_var(trim($_POST["email"]), FILTER_SANITIZE_EMAIL);
+    $message = strip_tags(trim($_POST["message"]));
+    // Check that data was sent to the bot.
+    if (empty($email)  || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        // Set a 400 (bad request) response code and exit.
+        http_response_code(400);
+        echo "Please correct your email";
+        exit;
     }
-} 
+
+    // Replace with your Telegram Bot API token and chat ID.
+//    $botToken = '6412738203:AAFC61mJZ5oMs9ZtY7-FxQR3r2NANuYDHV8';
+    $botToken = '6509670447:AAFB112H-fqnr-2XLLICW-nRh2i_rslTZiU';
+    $chatId = '-1001940014354';
+    // Compose the message for the Telegram bot.
+    $telegramMessage = "Name: $name\n";
+    $telegramMessage .= "Email: $email\n";
+    $telegramMessage .= "Message: $message\n";
+
+    // Create the URL for sending the message to the Telegram bot.
+    $telegramApiUrl = "https://api.telegram.org/bot{$botToken}/sendMessage";
+    $telegramParameters = [
+        'chat_id' => '188865453',
+//        'chat_id' => $chatId,
+        'text' => $telegramMessage,
+    ];
+
+    // Send the message to the Telegram bot using cURL.
+    $ch = curl_init($telegramApiUrl);
+    curl_setopt($ch, CURLOPT_POST, 1);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, $telegramParameters);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    $telegramResponse = curl_exec($ch);
+    curl_close($ch);
+
+    // Check if the message was sent successfully to the Telegram bot.
+    if ($telegramResponse && json_decode($telegramResponse)->ok) {
+        // Set a 200 (okay) response code.
+        http_response_code(200);
+        echo "Message has been sent.";
+    } else {
+        // Set a 500 (internal server error) response code.
+        http_response_code(500);
+        echo "Something went wrong :(";
+    }
+} else {
+    // Not a POST request, set a 403 (forbidden) response code.
+    http_response_code(403);
+    echo "There was a problem with your submission, please try again.";
+}

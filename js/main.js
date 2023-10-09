@@ -194,20 +194,15 @@
      Google Map
     -------------------------------------*/
     if ($('#googleMap').length) {
+        let map;
+        async function initMap() {
+            const { Map } = await google.maps.importLibrary("maps");
 
-        var initialize = function() {
-            var mapOptions = {
-                zoom: 15,
-                scrollwheel: false,
-                center: new google.maps.LatLng(-37.81618, 144.95692),
-                styles: [{
-                    stylers: [{
-                        saturation: -100
-                    }]
-                }]
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"),
-                mapOptions);
+            map = new Map(document.getElementById("googleMap"), {
+                center: { lat: 52.5200, lng: 13.4050 },
+                zoom: 8,
+
+            });
             var marker = new google.maps.Marker({
                 position: map.getCenter(),
                 animation: google.maps.Animation.BOUNCE,
@@ -216,8 +211,7 @@
             });
         }
 
-        // Add the map initialize function to the window load function
-        google.maps.event.addDomListener(window, "load", initialize);
+        initMap();
     }
 
     /*----------------------------
@@ -316,19 +310,52 @@
                         $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
                     },
                     success: function(text) {
-                        if (text == "success") {
                             $this[0].reset();
-                            $target.html("<div class='alert alert-success'><p>Message has been sent.</p></div>");
-                        } else {
-                            $target.html("<div class='alert alert-danger'><p>" + text + "</p></div>");
-                        }
+                            $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
+                    },
+                    error: function(jqXHR) {
+                            $target.html("<div class='alert alert-danger'><p>" + jqXHR.responseText + "</p></div>");
                     }
                 });
 
                 return false;
             }
         });
+    }
 
+    /*----------------------------
+    Get A Quote Form activation code
+    ------------------------------ */
+    var getQuoteFormFooter = $('#getQuoteFormFooter');
+    if (getQuoteFormFooter.length) {
+
+        getQuoteFormFooter.validator().on('submit', function(e) {
+            var $this = $(this),
+                $target = getQuoteFormFooter.find(".form-response");
+            if (e.isDefaultPrevented()) {
+                $target.html("<div class='alert alert-danger'><p>Please select all required field.</p></div>");
+            } else {
+
+                // ajax call
+                $.ajax({
+                    url: 'php/get-quote.php',
+                    type: 'POST',
+                    data: getQuoteFormFooter.serialize(),
+                    beforeSend: function() {
+                        $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
+                    },
+                    success: function(text) {
+                        $this[0].reset();
+                        $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
+                    },
+                    error: function(jqXHR) {
+                        $target.html("<div class='alert alert-danger'><p>" + jqXHR.responseText + "</p></div>");
+                    }
+                });
+
+                return false;
+            }
+        });
     }
 
     /*-------------------------------------
