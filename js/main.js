@@ -229,19 +229,18 @@
 
                 // ajax call
                 $.ajax({
-                    url: 'php/form-process.php',
+                    url: 'php/get-quote.php',
                     type: 'POST',
                     data: contactForm.serialize(),
                     beforeSend: function() {
                         $target.html("<div class='alert alert-info'><p>Loading ...</p></div>");
                     },
                     success: function(text) {
-                        if (text == "success") {
-                            $this[0].reset();
-                            $target.html("<div class='alert alert-success'><p>Message has been sent.</p></div>");
-                        } else {
-                            $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
-                        }
+                        $this[0].reset();
+                        $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
+                    },
+                    error: function(jqXHR) {
+                        $target.html("<div class='alert alert-danger'><p>" + jqXHR.responseText + "</p></div>");
                     }
                 });
 

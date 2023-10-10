@@ -28,7 +28,7 @@
 
 				startSlide: 0,
 
-				directionNav: true,
+				directionNav: false,
 
 				controlNavThumbs: true,
 

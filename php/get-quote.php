@@ -15,8 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Replace with your Telegram Bot API token and chat ID.
-//    $botToken = '6412738203:AAFC61mJZ5oMs9ZtY7-FxQR3r2NANuYDHV8';
-    $botToken = '6509670447:AAFB112H-fqnr-2XLLICW-nRh2i_rslTZiU';
+    $botToken = '6412738203:AAFC61mJZ5oMs9ZtY7-FxQR3r2NANuYDHV8';
     $chatId = '-1001940014354';
     // Compose the message for the Telegram bot.
     $telegramMessage = "Name: $name\n";
@@ -26,8 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Create the URL for sending the message to the Telegram bot.
     $telegramApiUrl = "https://api.telegram.org/bot{$botToken}/sendMessage";
     $telegramParameters = [
-        'chat_id' => '188865453',
-//        'chat_id' => $chatId,
+        'chat_id' => $chatId,
         'text' => $telegramMessage,
     ];
 

@@ -1977,7 +1977,7 @@ p.sub-title {
   text-align: center;
 }
 .about-grow-up {
-  position: relative;
+  position: sticky;
 }
 .about-grow-up::after {
   background: #0B3A40;
@@ -4848,9 +4848,6 @@ ul.category-menu li:last-child {
     margin-bottom: 10px;
     text-align: center;
   }
-  .slider-default .slider-content p {
-    display: none;
-  }
   .slider-default .slider-content .slider-btn-area {
     margin-top: 20px;
     display: block;
@@ -5133,7 +5130,7 @@ ul.category-menu li:last-child {
     display: none!important;
   }
   .slider-default .slider-content p.slider-big-text {
-    font-size: 36px;
+    font-size: 24px;
   }
   .slider-default .slider-content p {
     width: 100%;
@@ -5555,6 +5552,12 @@ ul.category-menu li:last-child {
     margin-bottom: 15px;
   }
 }
+@media only screen and (min-width: 481px) and (max-width: 590px) {
+  .online-marketing-needs .marketing-needs h1,
+  .work-success-area .success-content h1 {
+    width: 200%;
+  }
+}
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .check-out-area form h2 {
     font-size: 26px;
@@ -5619,6 +5622,7 @@ ul.category-menu li:last-child {
   .online-marketing-needs .marketing-needs h1,
   .work-success-area .success-content h1 {
     font-size: 24px;
+    width: 200%;
   }
   .single-product .product-overview-area ul.product-view-tab li {
     width: 100%;
@@ -5637,11 +5641,10 @@ ul.category-menu li:last-child {
     padding: 50px 0 35px;
   }
   .slider-default .slider-content p.slider-big-text {
-    font-size: 32px;
-    text-align: center;
+    font-size: 16px;
   }
   .slider-default .slider-content p {
-    display: none;
+    font-size: 12px;
   }
   .check-out-area form .form-group {
     width: 100%;
@@ -5841,8 +5844,7 @@ ul.category-menu li:last-child {
     display: none;
   }
   .slider-default .slider-content p.slider-big-text {
-    font-size: 28px;
-    text-align: center;
+    font-size: 24px;
   }
   .check-out-area form h2 {
     font-size: 22px;
