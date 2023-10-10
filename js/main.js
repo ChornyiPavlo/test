@@ -197,16 +197,13 @@
         let map;
         async function initMap() {
             const { Map } = await google.maps.importLibrary("maps");
-
             map = new Map(document.getElementById("googleMap"), {
                 center: { lat: 52.5200, lng: 13.4050 },
-                zoom: 8,
-
+                zoom: 11,
             });
             var marker = new google.maps.Marker({
                 position: map.getCenter(),
                 animation: google.maps.Animation.BOUNCE,
-                icon: 'img/map-marker.png',
                 map: map
             });
         }
