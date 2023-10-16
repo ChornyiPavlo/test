@@ -430,6 +430,11 @@ preview-2
     cursor: pointer;
 
 }
-
+@media only screen and (max-width: 480px) {
+  .preview-1 .nivoSlider img {
+    min-height: 200px;
+    object-fit: cover;
+  }
+}
 
 

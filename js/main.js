@@ -221,7 +221,7 @@
             var $this = $(this),
                 $target = contactForm.find(".form-response");
             if (e.isDefaultPrevented()) {
-                $target.html("<div class='alert alert-success'><p>Please select all required field.</p></div>");
+                e.preventDefault();
             } else {
 
                 // ajax call
@@ -257,7 +257,7 @@
             var $this = $(this),
                 $target = checkOutForm.find(".form-response");
             if (e.isDefaultPrevented()) {
-                $target.html("<div class='alert alert-success'><p>Please select all required field.</p></div>");
+                e.preventDefault();
             } else {
 
                 // ajax call
@@ -275,6 +275,9 @@
                         } else {
                             $target.html("<div class='alert alert-success'><p>" + text + "</p></div>");
                         }
+                    },
+                    error: function(jqXHR) {
+                        $target.html("<div class='alert alert-danger'><p>" + jqXHR.responseText + "</p></div>");
                     }
                 });
 
@@ -294,7 +297,7 @@
             var $this = $(this),
                 $target = getQuoteForm.find(".form-response");
             if (e.isDefaultPrevented()) {
-                $target.html("<div class='alert alert-danger'><p>Please select all required field.</p></div>");
+                e.preventDefault();
             } else {
 
                 // ajax call
@@ -329,7 +332,6 @@
             var $this = $(this),
                 $target = getQuoteFormFooter.find(".form-response");
             if (e.isDefaultPrevented()) {
-                $target.html("<div class='alert alert-danger'><p>Please select all required field.</p></div>");
             } else {
 
                 // ajax call
