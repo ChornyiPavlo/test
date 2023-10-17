@@ -1607,6 +1607,7 @@ font-size: 40px;
 }
 .take-our-service .single-service {
   margin-bottom: 40px;
+  cursor: pointer;
 }
 .take-our-service .single-service .icon {
   padding-right: 20px;
@@ -4727,17 +4728,12 @@ ul.category-menu li:last-child {
   .main-menu nav ul li a {
     padding: 0 12px;
   }
-  .slider-default .slider-content p.slider-big-text {
-    text-align: center;
-  }
   .slider-default .slider-content p {
     width: 100%;
-    text-align: center;
   }
   .slider-default .slider-content .slider-btn-area {
     display: block;
     margin-top: 30px;
-    text-align: center;
   }
   .slider-default .slider-content .slider-btn-area .default-button-btn {
     display: inline-block !important;
@@ -4848,12 +4844,10 @@ ul.category-menu li:last-child {
   .slider-default .slider-content p.slider-big-text {
     font-size: 36px;
     margin-bottom: 10px;
-    text-align: center;
   }
   .slider-default .slider-content .slider-btn-area {
     margin-top: 20px;
     display: block;
-    text-align: center;
   }
   .slider-default .slider-content .slider-btn-area .default-button-btn {
     display: inline-block !important;
@@ -5129,7 +5123,7 @@ ul.category-menu li:last-child {
     background: #ffffff;
   }
   .slider-default .slider-content p.slider-big-text {
-    font-size: 24px;
+    font-size: 18px;
     margin-bottom: 10px;
   }
   .slider-default .slider-content p {
@@ -5138,7 +5132,6 @@ ul.category-menu li:last-child {
   .slider-default .slider-content .slider-btn-area {
     margin-top: 30px;
     display: block;
-    text-align: center;
   }
   .slider-default .slider-content .slider-btn-area .default-button-btn {
     display: inline-block !important;
@@ -5400,9 +5393,6 @@ ul.category-menu li:last-child {
     margin-left: 0;
     margin-top: 20px;
   }
-  .slider-default .slider-content .slider-btn-area {
-    margin-top: 0;
-  }
   .nivo-directionNav a {
     top: 38%;
   }
@@ -5600,6 +5590,9 @@ ul.category-menu li:last-child {
   .about-seo-three .content-part h1 {
     font-size: 36px;
   }
+  .slider-default .slider-content p {
+    font-size: 12px;
+  }
 }
 @media only screen and (min-width: 321px) and (max-width: 480px) {
   .check-out-area form h2 {
@@ -5735,7 +5728,7 @@ ul.category-menu li:last-child {
     font-size: 34px;
   }
   .slider-default .slider-content .slider-btn-area {
-    float: right;
+    float: left;
     margin-top: 10px;
   }
 }
@@ -5853,7 +5846,7 @@ ul.category-menu li:last-child {
     display: none;
   }
   .slider-default .slider-content p.slider-big-text {
-    font-size: 24px;
+    font-size: 16px;
   }
   .check-out-area form h2 {
     font-size: 22px;
