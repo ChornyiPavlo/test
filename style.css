@@ -1813,6 +1813,7 @@ font-size: 40px;
   display: inline-block;
   margin-bottom: 0;
   width: 35%;
+  position: relative;
 }
 .check-out-area form .form-group input {
   border-radius: 3px;
@@ -6049,5 +6050,12 @@ ul.category-menu li:last-child {
   }
   .auto-clear > .col-xs-6:nth-child(odd) {
     clear: left;
+  }
+}
+
+@media (min-width: 768px) {
+  #checkoutForm .help-block.with-errors {
+    position: absolute;
+    right: 33%;
   }
 }
